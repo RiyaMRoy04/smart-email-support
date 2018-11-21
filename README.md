@@ -94,7 +94,7 @@ run `cd smart-email-support` to change directory to project parent folder
 ![NLUCreate](images/nlu-create.png)
 
 - Select appropriate region, organization and space. Select `Free` plan and click `Create`.
-- Click `Show Credentials` and save `Username` and `Password` in a file.
+- Click `Show Credentials` and save `API Key` in a file.
 
 ### 2.2 Create WKS service instance and build model
 - [Create WKS service instance](https://console.bluemix.net/catalog/services/knowledge-studio).
@@ -184,16 +184,16 @@ run `cd smart-email-support` to change directory to project parent folder
 ![NLCCreate](images/nlc-create.png)
 
 - Select appropriate region, org and space and click `Create`.
-- Click `Show Credentials` and make a note of `Username` and `password`.
+- Click `Show Credentials` and make a note of `API Key`.
 - In a command prompt, change directory to ``<git repo parent folder>/NLC``
-- Run the below command after updating *Username* and *password* with NLC service instance's username and password noted in previous step.
+- Run the below command after updating API Key with NLC service instance's api key noted in previous step.
 ```
-curl -i --user <username>:<password> -F training_data=@./Intent_training.csv -F training_metadata="{\"language\":\"en\",\"name\":\"NLClassifier\"}" "https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers"
+curl -i --user apikey:replace_api_key -F training_data=@./Intent_training.csv -F training_metadata="{\"language\":\"en\",\"name\":\"NLClassifier\"}" "https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers"
 ```
 - The NLC service instance will be trained with the training data *Intent_training.csv*. The command is executed with a information saying that it'll take sometime to train NLC. It takes a few minutes to train NLC.
 - Get classifier id using the command
 ```
-curl -u <username>:<password>  "https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers"
+curl -u "apikey:replace_api_key"  "https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers"
 ```
 - Make a note of *classifier_id*.
 
@@ -209,6 +209,7 @@ curl -u <username>:<password>  "https://gateway.watsonplatform.net/natural-langu
 - Select appropriate region, org and space and click `Create`.
 - The service should get created.
 
+### Bind NLC service & NLU service you had created earlier to NODE RED application.
 
 ### 5.2 Deploy Node-RED flow
 - Import Node-Red flow
