@@ -188,7 +188,7 @@ run `cd smart-email-support` to change directory to project parent folder
 - In a command prompt, change directory to ``<git repo parent folder>/NLC``
 - Run the below command after updating API Key with NLC service instance's api key noted in previous step.
 ```
-curl -i --user apikey:replace_api_key -F training_data=@./Intent_training.csv -F training_metadata="{\"language\":\"en\",\"name\":\"NLClassifier\"}" "https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers"
+curl -i --user "apikey:replace_api_key" -F training_data=@./Intent_training.csv -F training_metadata="{\"language\":\"en\",\"name\":\"NLClassifier\"}" "https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers"
 ```
 - The NLC service instance will be trained with the training data *Intent_training.csv*. The command is executed with a information saying that it'll take sometime to train NLC. It takes a few minutes to train NLC.
 - Get classifier id using the command
